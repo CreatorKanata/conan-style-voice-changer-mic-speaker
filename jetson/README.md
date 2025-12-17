@@ -149,7 +149,14 @@ Default Source: bluez_source.2C_FE_8B_20_90_43.handsfree_head_unit
 
 ## Auto-Connect Service Setup (User Systemd)
 
-The `bt-autoconnect.sh` script automatically connects to the Bluetooth speaker and microphone on boot and sets them as default audio devices.
+After Jetson boots, the `~/.local/bin/bt-autoconnect.sh` script runs automatically and:
+
+1. Connects to the bowtie microphone (`RED_BOWTIE_MIC`) via Bluetooth
+2. Connects to the button speaker (`BUTTON_SPEAKER`) via Bluetooth
+3. Sets the bowtie microphone as the default audio input device
+4. Sets the button speaker as the default audio output device
+
+The script checks the connection status every 10 seconds and reconnects if disconnected.
 
 This is configured as a **user-level systemd service** (no root required).
 
