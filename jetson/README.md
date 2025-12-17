@@ -15,7 +15,7 @@ This directory contains configuration and scripts for the Jetson Orin Nano Super
 |-----------|---------|
 | JetPack | 6.2.1 |
 | L4T (OS) | 36.4.4 (Ubuntu 22.04) |
-| CUDA | 12.6.x |
+| CUDA | 12.6 |
 | TensorRT | 10.3.0 |
 | cuDNN | 9.3.0 |
 | PyTorch | 2.8.0 |
@@ -68,6 +68,12 @@ Tensor on GPU: cuda:0
 Install PyTorch for Jetson platform following the official guide:
 
 https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
+
+Install torchvision:
+
+```bash
+pip install --no-cache-dir torchvision==0.20.0 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v62
+```
 
 ### Python Virtual Environment Setup
 
