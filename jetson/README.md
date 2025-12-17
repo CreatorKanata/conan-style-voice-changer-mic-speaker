@@ -38,6 +38,19 @@ Check PyTorch version:
 python3 -c "import torch; print(torch.__version__)"
 ```
 
+Check GPU availability:
+
+```bash
+python3 -c "import torch; print('GPU Available:', torch.cuda.is_available()); print('GPU Name:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'None')"
+```
+
+Expected output:
+
+```
+GPU Available: True
+GPU Name: Orin
+```
+
 ### PyTorch Installation
 
 Install PyTorch for Jetson platform following the official guide:
