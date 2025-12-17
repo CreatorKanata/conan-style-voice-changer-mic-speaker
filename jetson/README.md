@@ -9,10 +9,10 @@ This directory contains configuration and scripts for the Jetson Orin Nano Super
 
 ## Bluetooth Device MAC Addresses
 
-| Device | MAC Address |
-|--------|-------------|
-| Button Speaker (BM83) | `2C:FE:8B:20:90:7D` |
-| Bowtie Microphone (BM83) | `2C:FE:8B:20:90:43` |
+| Device | MAC Address | Bluetooth Name |
+|--------|-------------|----------------|
+| Button Speaker (BM83) | `2C:FE:8B:20:90:7D` | `BUTTON_SPEAKER` |
+| Bowtie Microphone (BM83) | `2C:FE:8B:20:90:43` | `RED_BOWTIE_MIC` |
 
 ## Installation
 
@@ -82,7 +82,32 @@ trust XX:XX:XX:XX:XX:XX
 connect XX:XX:XX:XX:XX:XX
 ```
 
+When scanning, devices appear as:
+
+```
+[NEW] Device 2C:FE:8B:20:90:43 RED_BOWTIE_MIC
+[NEW] Device 2C:FE:8B:20:90:7D BUTTON_SPEAKER
+```
+
 ## PulseAudio Configuration
+
+### Verify Bluetooth Connection
+
+After connecting, verify the devices are available in PulseAudio:
+
+```bash
+pactl list sources short
+```
+
+Example output when both devices are connected:
+
+```
+0    alsa_output.platform-sound.analog-stereo.monitor    module-alsa-card.c    s16le 2ch 44100Hz    SUSPENDED
+1    alsa_input.platform-sound.analog-stereo    module-alsa-card.c    s16le 2ch 44100Hz    SUSPENDED
+3    bluez_sink.2C_FE_8B_20_90_7D.a2dp_sink.monitor    module-bluez5-device.c    s16le 2ch 44100Hz    SUSPENDED
+4    bluez_sink.2C_FE_8B_20_90_43.handsfree_head_unit.monitor    module-bluez5-device.c    s16le 1ch 16000Hz    SUSPENDED
+5    bluez_source.2C_FE_8B_20_90_43.handsfree_head_unit    module-bluez5-device.c    s16le 1ch 16000Hz    SUSPENDED
+```
 
 ### List Available Sinks (Output Devices)
 
