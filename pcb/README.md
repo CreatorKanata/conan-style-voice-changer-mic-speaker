@@ -15,11 +15,11 @@ Bluetooth microphone board with BM83 module and MEMS microphone.
 
 ### Board Preview
 
-![Bowtie Mic PCB](https://raw.githubusercontent.com/CreatorKanata/conan-style-voice-changer-mic-speaker/main/pcb/bowtie-mic/pcb1.png)
+![Bowtie Mic PCB](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/pcb/bowtie-mic/pcb1.png?raw=true)
 
 ### PCBA Preview
 
-![Bowtie Mic PCBA](https://raw.githubusercontent.com/CreatorKanata/conan-style-voice-changer-mic-speaker/main/pcb/bowtie-mic/pcba.png)
+![Bowtie Mic PCBA](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/pcb/bowtie-mic/pcba.png?raw=true)
 
 ### Files
 
@@ -46,13 +46,13 @@ Bluetooth speaker board with BM83 module.
 
 ### Board Preview
 
-![Button Speaker PCB Front](https://raw.githubusercontent.com/CreatorKanata/conan-style-voice-changer-mic-speaker/main/pcb/button-speaker/pcb1.png)
+![Button Speaker PCB Front](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/pcb/button-speaker/pcb1.png?raw=true)
 
-![Button Speaker PCB Back](https://raw.githubusercontent.com/CreatorKanata/conan-style-voice-changer-mic-speaker/main/pcb/button-speaker/pcb2.png)
+![Button Speaker PCB Back](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/pcb/button-speaker/pcb2.png?raw=true)
 
 ### PCBA Preview
 
-![Button Speaker PCBA](https://raw.githubusercontent.com/CreatorKanata/conan-style-voice-changer-mic-speaker/main/pcb/button-speaker/pcba.png)
+![Button Speaker PCBA](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/pcb/button-speaker/pcba.png?raw=true)
 
 ### Files
 
