@@ -69,6 +69,25 @@ Install PyTorch for Jetson platform following the official guide:
 
 https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
 
+```bash
+# Install dependencies
+sudo apt-get -y update
+sudo apt-get install -y python3-pip libopenblas-dev
+
+# Install cuSPARSELt
+wget https://raw.githubusercontent.com/pytorch/pytorch/5c6af2b583709f6176898c017424dc9981023c28/.ci/docker/common/install_cusparselt.sh
+sudo su
+export CUDA_VERSION=12.6
+bash ./install_cusparselt.sh
+exit
+
+# Install PyTorch
+export TORCH_INSTALL=https://developer.download.nvidia.cn/compute/redist/jp/v61/pytorch/torch-2.5.0a0+872d972e41.nv24.08.17622132-cp310-cp310-linux_aarch64.whl
+python3 -m pip install --upgrade pip
+python3 -m pip install numpy==1.26.1
+python3 -m pip install --no-cache $TORCH_INSTALL
+```
+
 Install torchvision:
 
 ```bash
