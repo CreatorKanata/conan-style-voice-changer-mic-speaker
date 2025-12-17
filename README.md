@@ -4,7 +4,7 @@ A real-world implementation of the iconic voice changer bowtie from Detective Co
 
 ![Project Status](https://img.shields.io/badge/status-in%20development-yellow)
 
-![Hero](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/hero.jpg?raw=true)
+<a href="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/hero.jpg?raw=true"><img src="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/hero.jpg?raw=true" width="500"></a>
 
 ## Overview
 
@@ -25,7 +25,7 @@ This project brings the fictional "voice changer bowtie" from Detective Conan to
 
 ### Bowtie Microphone
 
-![Bowtie Mic](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/bowtie-mic-pcb-case.jpg?raw=true)
+<a href="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/bowtie-mic-pcb-case.jpg?raw=true"><img src="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/bowtie-mic-pcb-case.jpg?raw=true" width="500"></a>
 
 | Component | Description |
 |-----------|-------------|
@@ -36,7 +36,7 @@ This project brings the fictional "voice changer bowtie" from Detective Conan to
 
 ### Button Speaker
 
-![Button Speaker](https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/button-speaker-pcb-case.jpg?raw=true)
+<a href="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/button-speaker-pcb-case.jpg?raw=true"><img src="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/button-speaker-pcb-case.jpg?raw=true" width="500"></a>
 
 | Component | Description |
 |-----------|-------------|
