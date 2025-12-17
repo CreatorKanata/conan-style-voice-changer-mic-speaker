@@ -51,6 +51,18 @@ GPU Available: True
 GPU Name: Orin
 ```
 
+Verify GPU memory access:
+
+```bash
+python3 -c "import torch; a = torch.tensor([1.0, 2.0]).cuda(); print('Tensor on GPU:', a.device)"
+```
+
+Expected output (`cuda:0` means data is successfully transferred to GPU memory):
+
+```
+Tensor on GPU: cuda:0
+```
+
 ### PyTorch Installation
 
 Install PyTorch for Jetson platform following the official guide:
