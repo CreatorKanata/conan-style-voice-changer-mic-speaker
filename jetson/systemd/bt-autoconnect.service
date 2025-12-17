@@ -1,14 +1,15 @@
 [Unit]
-Description=Auto connect BT speaker & mic
-After=bluetooth.service
-Requires=bluetooth.service
+Description=Bluetooth auto connect (user)
+After=graphical-session.target bluetooth.target
+Wants=bluetooth.target
 
 [Service]
-Type=oneshot
-ExecStart=/usr/local/bin/bt-autoconnect.sh
-RemainAfterExit=yes
-#User=hide
+Type=simple
+ExecStart=%h/.local/bin/bt-autoconnect.sh
+Restart=always
+RestartSec=5
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
 
 [Install]
-WantedBy=multi-user.target
-
+WantedBy=default.target

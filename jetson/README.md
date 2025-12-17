@@ -2,6 +2,11 @@
 
 This directory contains configuration and scripts for the Jetson Orin Nano Super, which serves as the central processing unit for the voice changer system.
 
+## Hardware Requirements
+
+- **HDMI Dummy Plug**: Required for headless operation. The graphical session must be active for the user systemd service to work properly.
+  - Example: https://amzn.asia/d/6qnBn8m
+
 ## Bluetooth Device MAC Addresses
 
 | Device | MAC Address |
@@ -104,38 +109,53 @@ pactl set-default-sink bluez_sink.2C_FE_8B_20_90_7D.a2dp_sink
 pactl set-default-source bluez_source.2C_FE_8B_20_90_43.handsfree_head_unit
 ```
 
-## Auto-Connect Service Setup
+## Auto-Connect Service Setup (User Systemd)
 
 The `bt-autoconnect.sh` script automatically connects to the Bluetooth speaker and microphone on boot and sets them as default audio devices.
 
-### 1. Copy Script
+This is configured as a **user-level systemd service** (no root required).
+
+### 1. Create Directories
 
 ```bash
-sudo cp bin/bt-autoconnect.sh /usr/local/bin/bt-autoconnect.sh
-sudo chmod +x /usr/local/bin/bt-autoconnect.sh
+mkdir -p ~/.local/bin
+mkdir -p ~/.config/systemd/user
 ```
 
-### 2. Install Systemd Service
+### 2. Copy Script
 
 ```bash
-sudo cp systemd/bt-autoconnect.service /etc/systemd/system/bt-autoconnect.service
+cp bin/bt-autoconnect.sh ~/.local/bin/bt-autoconnect.sh
+chmod +x ~/.local/bin/bt-autoconnect.sh
 ```
 
-### 3. Enable and Start Service
+### 3. Install User Systemd Service
 
 ```bash
-sudo systemctl daemon-reload
-sudo systemctl enable bt-autoconnect.service
-sudo systemctl start bt-autoconnect.service
+cp systemd/bt-autoconnect.service ~/.config/systemd/user/bt-autoconnect.service
 ```
 
-### 4. Check Service Status
+### 4. Enable and Start Service
 
 ```bash
-systemctl status bt-autoconnect.service
+systemctl --user daemon-reload
+systemctl --user enable bt-autoconnect.service
+systemctl --user start bt-autoconnect.service
 ```
 
-Once the service is running, the Bluetooth speaker and microphone will automatically connect on boot and be set as the default audio devices.
+### 5. Check Service Status
+
+```bash
+systemctl --user status bt-autoconnect.service
+```
+
+### 6. View Logs
+
+```bash
+journalctl --user -u bt-autoconnect.service -f
+```
+
+Once the service is running, the Bluetooth speaker and microphone will automatically connect on login and be set as the default audio devices.
 
 ## Directory Structure
 
