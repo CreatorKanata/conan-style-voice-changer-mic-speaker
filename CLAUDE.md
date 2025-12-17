@@ -38,6 +38,8 @@ This is a real-world implementation of the voice changer bowtie from Detective C
 
 ```
 ├── 3d-models/          # 3D printable case designs (STEP format, Autodesk Fusion)
+│   ├── bowtie-mic/     # Bowtie microphone case
+│   └── button-speaker/ # Button speaker case
 ├── pcb/
 │   ├── bowtie-mic/     # Microphone PCB data (EasyEDA Pro)
 │   └── button-speaker/ # Speaker PCB data (EasyEDA Pro)

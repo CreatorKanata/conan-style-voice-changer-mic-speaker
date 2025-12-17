@@ -42,16 +42,18 @@ This project brings the fictional "voice changer bowtie" from Detective Conan to
 ## Project Structure
 
 ```
-├── 3d-models/          # 3D printable case designs (STEP)
-│   ├── red-bowtie-mic.step
-│   ├── red-bowtie-mic-bottom.step
-│   ├── button-speaker-top.step
-│   └── button-speaker-bottom.step
+├── 3d-models/              # 3D printable case designs (STEP)
+│   ├── bowtie-mic/         # Bowtie microphone case
+│   │   ├── red-bowtie-mic.step
+│   │   └── red-bowtie-mic-bottom.step
+│   └── button-speaker/     # Button speaker case
+│       ├── button-speaker-top.step
+│       └── button-speaker-bottom.step
 ├── pcb/
-│   ├── bowtie-mic/     # Microphone PCB (EasyEDA Pro)
-│   └── button-speaker/ # Speaker PCB (EasyEDA Pro)
-├── jetson/             # Jetson software (planned)
-└── docs/               # Documentation
+│   ├── bowtie-mic/         # Microphone PCB (EasyEDA Pro)
+│   └── button-speaker/     # Speaker PCB (EasyEDA Pro)
+├── jetson/                 # Jetson software (planned)
+└── docs/                   # Documentation
 ```
 
 ## Getting Started
