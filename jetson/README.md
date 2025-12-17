@@ -134,6 +134,19 @@ pactl set-default-sink bluez_sink.2C_FE_8B_20_90_7D.a2dp_sink
 pactl set-default-source bluez_source.2C_FE_8B_20_90_43.handsfree_head_unit
 ```
 
+### Check Current Default Devices
+
+```bash
+pactl info | grep -E 'Default (Sink|Source)'
+```
+
+Example output:
+
+```
+Default Sink: bluez_sink.2C_FE_8B_20_90_7D.a2dp_sink
+Default Source: bluez_source.2C_FE_8B_20_90_43.handsfree_head_unit
+```
+
 ## Auto-Connect Service Setup (User Systemd)
 
 The `bt-autoconnect.sh` script automatically connects to the Bluetooth speaker and microphone on boot and sets them as default audio devices.
