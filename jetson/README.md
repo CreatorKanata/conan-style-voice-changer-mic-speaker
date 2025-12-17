@@ -88,6 +88,18 @@ python3 -m pip install numpy==1.26.1
 python3 -m pip install --no-cache $TORCH_INSTALL
 ```
 
+Verify PyTorch installation:
+
+```bash
+python3 -c "import torch; print('Torch Version:', torch.__version__, ', Torch GPU:', torch.cuda.is_available())"
+```
+
+Expected output:
+
+```
+Torch Version: 2.5.0a0+872d972e41.nv24.08 , Torch GPU: True
+```
+
 Install torchvision:
 
 ```bash
