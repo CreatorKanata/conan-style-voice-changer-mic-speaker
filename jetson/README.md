@@ -69,6 +69,34 @@ Install PyTorch for Jetson platform following the official guide:
 
 https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
 
+### Python Virtual Environment Setup
+
+```bash
+sudo apt install python3.10-venv
+python3.10 -m venv .venv --system-site-packages
+source .venv/bin/activate
+```
+
+### ONNX Runtime Installation (GPU)
+
+Install ONNX Runtime with GPU support from Jetson AI Lab:
+
+```bash
+pip install "https://pypi.jetson-ai-lab.io/jp6/cu126/+f/4eb/e6a8902dc7708/onnxruntime_gpu-1.23.0-cp310-cp310-linux_aarch64.whl#sha256=4ebe6a8902dc7708434b2e1541b3fe629ebf434e16ab5537d1d6a622b42c622b"
+```
+
+Verify installation:
+
+```bash
+python3 -c "import onnxruntime; print('Successfully loaded:', onnxruntime.get_available_providers())"
+```
+
+Expected output:
+
+```
+Successfully loaded: ['TensorrtExecutionProvider', 'CUDAExecutionProvider', 'CPUExecutionProvider']
+```
+
 ## Bluetooth Device MAC Addresses
 
 | Device | MAC Address | Bluetooth Name |
