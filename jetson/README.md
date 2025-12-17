@@ -7,6 +7,43 @@ This directory contains configuration and scripts for the Jetson Orin Nano Super
 - **HDMI Dummy Plug**: Required for headless operation. The graphical session must be active for the user systemd service to work properly.
   - Example: https://amzn.asia/d/6qnBn8m
 
+## Software Environment
+
+### JetPack 6.2.1
+
+| Component | Version |
+|-----------|---------|
+| JetPack | 6.2.1 |
+| L4T (OS) | 36.4.4 (Ubuntu 22.04) |
+| CUDA | 12.6.x |
+| TensorRT | 10.3.0 |
+| cuDNN | 9.3.0 |
+| PyTorch | 2.8.0 |
+
+Check JetPack version:
+
+```bash
+apt show nvidia-jetpack
+```
+
+Check CUDA version:
+
+```bash
+nvcc --version
+```
+
+Check PyTorch version:
+
+```bash
+python3 -c "import torch; print(torch.__version__)"
+```
+
+### PyTorch Installation
+
+Install PyTorch for Jetson platform following the official guide:
+
+https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
+
 ## Bluetooth Device MAC Addresses
 
 | Device | MAC Address | Bluetooth Name |
