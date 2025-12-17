@@ -18,7 +18,7 @@ This directory contains configuration and scripts for the Jetson Orin Nano Super
 | CUDA | 12.6 |
 | TensorRT | 10.3.0 |
 | cuDNN | 9.3.0 |
-| PyTorch | 2.8.0 |
+| PyTorch | 2.5.0 |
 
 Check JetPack version:
 
