@@ -1,0 +1,14 @@
+[Unit]
+Description=Auto connect BT speaker & mic
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/bt-autoconnect.sh
+RemainAfterExit=yes
+#User=hide
+
+[Install]
+WantedBy=multi-user.target
+
