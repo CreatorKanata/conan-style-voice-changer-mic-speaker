@@ -18,7 +18,7 @@ This directory contains configuration and scripts for the Jetson Orin Nano Super
 | CUDA | 12.6 |
 | TensorRT | 10.3.0 |
 | cuDNN | 9.3.0 |
-| PyTorch | 2.5.0 |
+| PyTorch | 2.8.0 |
 
 Check JetPack version:
 
@@ -65,27 +65,11 @@ Tensor on GPU: cuda:0
 
 ### PyTorch Installation
 
-Install PyTorch for Jetson platform following the official guide:
-
-https://docs.nvidia.com/deeplearning/frameworks/install-pytorch-jetson-platform/index.html
+Install PyTorch 2.8.0 from Jetson AI Lab:
 
 ```bash
-# Install dependencies
-sudo apt-get -y update
-sudo apt-get install -y python3-pip libopenblas-dev
-
-# Install cuSPARSELt
-wget https://raw.githubusercontent.com/pytorch/pytorch/5c6af2b583709f6176898c017424dc9981023c28/.ci/docker/common/install_cusparselt.sh
-sudo su
-export CUDA_VERSION=12.6
-bash ./install_cusparselt.sh
-exit
-
-# Install PyTorch
-export TORCH_INSTALL=https://developer.download.nvidia.cn/compute/redist/jp/v61/pytorch/torch-2.5.0a0+872d972e41.nv24.08.17622132-cp310-cp310-linux_aarch64.whl
-python3 -m pip install --upgrade pip
-python3 -m pip install numpy==1.26.1
-python3 -m pip install --no-cache $TORCH_INSTALL
+python3 -m pip install --index-url https://pypi.jetson-ai-lab.io/jp6/cu126 \
+  torch torchvision torchaudio
 ```
 
 Verify PyTorch installation:
@@ -97,13 +81,7 @@ python3 -c "import torch; print('Torch Version:', torch.__version__, ', Torch GP
 Expected output:
 
 ```
-Torch Version: 2.5.0a0+872d972e41.nv24.08 , Torch GPU: True
-```
-
-Install torchvision:
-
-```bash
-pip install --no-cache-dir torchvision==0.20.0 --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v62
+Torch Version: 2.8.0 , Torch GPU: True
 ```
 
 ### Python Virtual Environment Setup
