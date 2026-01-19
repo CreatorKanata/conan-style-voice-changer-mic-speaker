@@ -154,18 +154,18 @@ Test Speaker
 ```
 wpctl set-volume @DEFAULT_AUDIO_SINK@ 1.0
 wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.3
-pw-play ~/conan-style-voice-changer-mic-speaker/jetson/sounds/test_sp.wav 
+pw-play ~/conan-style-voice-changer-mic-speaker/raspi5/sounds/test_sp.wav 
 ```
 
 ```
 mkdir -p ~/.local/bin
-cp ~/conan-style-voice-changer-mic-speaker/jetson/local/ensure-audio-defaults.sh ~/.local/bin/
+cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/ensure-audio-defaults.sh ~/.local/bin/
 chmod 755 ~/.local/bin/ensure-audio-defaults.sh
 ```
 
 ```
 mkdir -p ~/.config/systemd/user
-cp ~/conan-style-voice-changer-mic-speaker/jetson/local/ensure-audio-defaults.service ~/.config/systemd/user/
+cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/ensure-audio-defaults.service ~/.config/systemd/user/
 systemctl --user daemon-reload
 systemctl --user enable --now ensure-audio-defaults.service
 
