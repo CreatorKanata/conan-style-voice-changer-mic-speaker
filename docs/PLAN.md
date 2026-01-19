@@ -12,56 +12,54 @@
 
 ### In Progress
 
-- [ ] Jetson Orin Nano Super setup and configuration
-- [ ] Voice changer implementation (RVC)
+- [x] Raspberry Pi 5 setup and configuration
+- [x] Voice changer implementation (Beatrice)
 - [ ] Real-time translation implementation (Gemini Live API)
 
 ## Implementation Steps
 
-### Phase 1: Jetson Environment Setup
+### Phase 1: Raspberry Pi 5 Environment Setup
 
 #### 1.1 System Configuration
 
-- [ ] Install JetPack SDK (latest version for Orin Nano Super)
-- [ ] Configure CUDA and TensorRT
-- [ ] Set up Python virtual environment
+- [x] Install Raspberry Pi OS (64-bit) Bookworm
+- [x] Configure system locale and WLAN
+- [x] Install required packages
 
 #### 1.2 Bluetooth Audio Setup
 
-- [ ] Configure PulseAudio/PipeWire for Bluetooth
-- [ ] Pair BM83 microphone (HFP profile)
-- [ ] Pair BM83 speaker (A2DP profile)
-- [ ] Configure audio routing (mic input → processing → speaker output)
-- [ ] Test Bluetooth auto-reconnection on boot
+- [x] Configure PipeWire for Bluetooth
+- [x] Pair BM83 microphone (HFP profile)
+- [x] Pair BM83 speaker (A2DP profile)
+- [x] Configure audio routing (mic input → processing → speaker output)
+- [x] Test Bluetooth auto-reconnection on boot
 
 #### 1.3 Audio Pipeline
 
-- [ ] Set up audio capture from HFP source
-- [ ] Configure sample rate and buffer settings for low latency
-- [ ] Set up audio output to A2DP sink
-- [ ] Test end-to-end audio passthrough
+- [x] Set up audio capture from HFP source
+- [x] Configure sample rate and buffer settings for low latency
+- [x] Set up audio output to A2DP sink
+- [x] Test end-to-end audio passthrough
 
-### Phase 2: Voice Changer (RVC)
+### Phase 2: Voice Changer (Beatrice)
 
-#### 2.1 RVC Setup
+#### 2.1 voice-changer Setup
 
-- [ ] Clone and install RVC repository
-- [ ] Download pre-trained models
-- [ ] Optimize for TensorRT inference
-- [ ] Test basic voice conversion
+- [x] Download voice-changer (vcclient) for aarch64
+- [x] Install required dependencies
+- [x] Test basic voice conversion
 
 #### 2.2 Real-time Processing
 
-- [ ] Implement streaming audio input
-- [ ] Configure RVC for real-time inference
-- [ ] Optimize buffer sizes for minimum latency
-- [ ] Implement voice model switching
+- [x] Configure voice-changer for real-time inference
+- [x] Optimize buffer sizes for minimum latency
+- [x] Implement voice model switching via API
 
 #### 2.3 Integration
 
-- [ ] Connect Bluetooth input to RVC
-- [ ] Connect RVC output to Bluetooth speaker
-- [ ] Test end-to-end voice changing
+- [x] Connect Bluetooth input to voice-changer
+- [x] Connect voice-changer output to Bluetooth speaker
+- [x] Test end-to-end voice changing
 - [ ] Measure and optimize latency
 
 ### Phase 3: Real-time Translation
@@ -89,10 +87,10 @@
 
 #### 4.1 Startup and Auto-run
 
-- [ ] Create systemd service for voice changer
-- [ ] Configure auto-start on boot
-- [ ] Implement graceful shutdown handling
-- [ ] Add logging and monitoring
+- [x] Create systemd service for voice changer
+- [x] Configure auto-start on boot
+- [x] Implement graceful shutdown handling
+- [x] Add logging and monitoring
 
 #### 4.2 Power Management
 
@@ -107,27 +105,21 @@
 - [ ] User experience testing
 - [ ] Bug fixes and stability improvements
 
-## Directory Structure (Planned)
+## Directory Structure
 
 ```
-jetson/
-├── setup/
-│   ├── install.sh          # Installation script
-│   ├── bluetooth.sh         # Bluetooth configuration
-│   └── audio.sh            # Audio pipeline setup
-├── voice_changer/
-│   ├── main.py             # Voice changer main script
-│   ├── rvc_wrapper.py      # RVC interface
-│   └── audio_pipeline.py   # Audio routing
-├── translator/
-│   ├── main.py             # Translation main script
-│   ├── gemini_client.py    # Gemini Live API client
-│   └── tts.py              # Text-to-speech handler
-├── config/
-│   ├── config.yaml         # Main configuration
-│   └── voices/             # Voice model configurations
-└── services/
-    └── voice-changer.service # Systemd service file
+raspi5/
+├── local/
+│   ├── ensure-audio-defaults.sh    # Audio device monitoring script
+│   ├── ensure-audio-defaults.service
+│   ├── wait-for-audio-devices.sh   # Wait for BT devices script
+│   ├── vcclient-autostart.sh       # Voice changer auto-start script
+│   └── vcclient.service            # Systemd service file
+├── sounds/
+│   ├── test_sp.wav                 # Speaker test sound
+│   ├── test_mic.wav                # Microphone test sound
+│   └── start.wav                   # Startup sound
+└── README.md                       # Setup instructions
 ```
 
 ## Technical Specifications
@@ -145,35 +137,33 @@ jetson/
 
 ### Hardware Requirements
 
-- Jetson Orin Nano Super (8GB RAM)
+- Raspberry Pi 5 (4GB RAM)
 - BM83 Bluetooth modules (pre-paired)
 - Stable power supply
+- SD card (16GB+)
 
 ## Dependencies
 
-### Python Packages
+### voice-changer (vcclient)
 
-- `torch` (PyTorch with CUDA)
-- `torchaudio`
-- `numpy`
-- `pydub` or `sounddevice`
-- `google-cloud-aiplatform` (for Gemini)
+- Download from: https://github.com/w-okada/voice-changer
+- Use aarch64 version with Beatrice support
 
 ### System Packages
 
-- PulseAudio or PipeWire
+- PipeWire (audio server)
 - BlueZ (Bluetooth stack)
-- CUDA Toolkit
-- cuDNN
-- TensorRT
+- libportaudio2, portaudio19-dev
+- libasound2, libasound2-dev
+- libayatana-appindicator3-1, libappindicator3-1
 
 ## Risks and Mitigations
 
 | Risk | Mitigation |
 |------|------------|
-| High latency | Optimize buffer sizes, use TensorRT |
-| Bluetooth instability | Implement reconnection logic |
-| GPU memory constraints | Optimize model for Jetson |
+| High latency | Optimize buffer sizes, use Beatrice (CPU-optimized) |
+| Bluetooth instability | Implement reconnection logic with systemd services |
+| CPU constraints | Use Beatrice model optimized for ARM |
 | Power consumption | Use efficient inference settings |
 
 ## Success Criteria

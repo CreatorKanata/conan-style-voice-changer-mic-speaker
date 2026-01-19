@@ -15,17 +15,17 @@ This project aims to create a functional real-world version of this fictional de
 ```
 ┌─────────────────────┐     Bluetooth HFP     ┌──────────────────────┐
 │   Bowtie Mic        │◄────────────────────►│                      │
-│   - BM83 Module     │                       │   Jetson Orin Nano   │
-│   - MEMS Microphone │                       │        Super         │
-│   - Battery         │                       │                      │
-│   - 3D Printed Case │                       │   - Voice Changer    │
-└─────────────────────┘                       │     (RVC)            │
-                                              │                      │
-┌─────────────────────┐     Bluetooth A2DP    │   - Real-time        │
-│   Button Speaker    │◄────────────────────►│     Translation      │
-│   - BM83 Module     │                       │     (Gemini Live)    │
-│   - Thin Speaker    │                       │                      │
-│   - Battery         │                       └──────────────────────┘
+│   - BM83 Module     │                       │   Raspberry Pi 5     │
+│   - MEMS Microphone │                       │                      │
+│   - Battery         │                       │   - Voice Changer    │
+│   - 3D Printed Case │                       │     (Beatrice)       │
+└─────────────────────┘                       │                      │
+                                              │   - Real-time        │
+┌─────────────────────┐     Bluetooth A2DP    │     Translation      │
+│   Button Speaker    │◄────────────────────►│     (Gemini Live)    │
+│   - BM83 Module     │                       │                      │
+│   - Thin Speaker    │                       └──────────────────────┘
+│   - Battery         │
 │   - 3D Printed Case │
 └─────────────────────┘
 ```
@@ -57,11 +57,11 @@ The Microchip BM83 Bluetooth module was chosen for:
 
 ## Software Features
 
-### Voice Changer (RVC)
+### Voice Changer (Beatrice)
 
-RVC (Retrieval-based Voice Conversion) enables real-time voice transformation:
-- Train on target voice samples
-- Real-time inference on Jetson GPU
+voice-changer (Beatrice) enables real-time voice transformation:
+- Pre-trained voice models available
+- Real-time inference on Raspberry Pi 5 CPU
 - Low latency processing for natural conversation
 
 ### Real-time Translation (Gemini Live API)

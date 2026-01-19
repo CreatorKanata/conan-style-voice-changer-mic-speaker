@@ -4,7 +4,7 @@ This file provides guidance for Claude Code when working with this repository.
 
 ## Project Overview
 
-This is a real-world implementation of the voice changer bowtie from Detective Conan anime. The project includes hardware designs (PCB, 3D printed cases) and software (Jetson Orin Nano Super voice processing).
+This is a real-world implementation of the voice changer bowtie from Detective Conan anime. The project includes hardware designs (PCB, 3D printed cases) and software (Raspberry Pi 5 voice processing).
 
 ## Architecture
 
@@ -24,14 +24,14 @@ This is a real-world implementation of the voice changer bowtie from Detective C
    - Battery powered
    - Bluetooth A2DP profile for audio reception
 
-3. **Jetson Orin Nano Super**
+3. **Raspberry Pi 5**
    - Central processing unit
    - Runs voice changer and translation software
    - Pre-paired Bluetooth connections to mic and speaker
 
 ### Software Features (Planned)
 
-1. **Voice Changer** - Real-time voice modification using RVC (Retrieval-based Voice Conversion)
+1. **Voice Changer** - Real-time voice modification using voice-changer (Beatrice)
 2. **Real-time Translation** - Japanese to English translation using Gemini Live API
 
 ## Directory Structure
@@ -43,7 +43,7 @@ This is a real-world implementation of the voice changer bowtie from Detective C
 ├── pcb/
 │   ├── bowtie-mic/     # Microphone PCB data (EasyEDA Pro)
 │   └── button-speaker/ # Speaker PCB data (EasyEDA Pro)
-├── jetson/             # (Planned) Jetson configuration and scripts
+├── raspi5/             # Raspberry Pi 5 configuration and scripts
 ├── docs/               # Documentation
 └── screen-records/     # Development recordings (gitignored)
 ```
@@ -67,12 +67,11 @@ This is a real-world implementation of the voice changer bowtie from Detective C
 - Export as STEP format
 - Consider component clearance and assembly
 
-### Jetson Software
+### Raspberry Pi 5 Software
 
-- Python-based audio processing
-- RVC for voice conversion
-- Gemini Live API for real-time translation
-- PulseAudio/PipeWire for Bluetooth audio routing
+- voice-changer (Beatrice) for voice conversion
+- Gemini Live API for real-time translation (planned)
+- PipeWire for Bluetooth audio routing
 
 ## Sponsor
 
@@ -81,11 +80,11 @@ This is a real-world implementation of the voice changer bowtie from Detective C
 ## Key Commands
 
 ```bash
-# No build commands yet - Jetson software implementation pending
+# See raspi5/README.md for setup instructions
 ```
 
 ## Important Notes
 
-- BM83 modules need to be pre-paired with Jetson for automatic connection
+- BM83 modules need to be pre-paired with Raspberry Pi 5 for automatic connection
 - Audio latency is critical for natural voice changing experience
 - Power management is important for portable operation

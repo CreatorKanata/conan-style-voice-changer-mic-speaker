@@ -12,11 +12,11 @@ This project brings the fictional "voice changer bowtie" from Detective Conan to
 
 - **Bowtie Microphone**: A wearable microphone in the classic bowtie shape
 - **Button Speaker**: A discreet speaker that can be placed anywhere
-- **Jetson Orin Nano Super**: The processing unit that handles voice changing and translation
+- **Raspberry Pi 5**: The processing unit that handles voice changing and translation
 
 ## Features
 
-- **Real-time Voice Changing** using RVC (Retrieval-based Voice Conversion)
+- **Real-time Voice Changing** using voice-changer (Beatrice)
 - **Japanese to English Translation** using Gemini Live API *(planned)*
 - **Wireless Operation** via Bluetooth (HFP for mic, A2DP for speaker)
 - **Portable Design** with battery-powered peripherals
@@ -58,7 +58,7 @@ This project brings the fictional "voice changer bowtie" from Detective Conan to
 ├── pcb/
 │   ├── bowtie-mic/         # Microphone PCB (EasyEDA Pro)
 │   └── button-speaker/     # Speaker PCB (EasyEDA Pro)
-├── jetson/                 # Jetson software (planned)
+├── raspi5/                 # Raspberry Pi 5 configuration and scripts
 └── docs/                   # Documentation
 ```
 
@@ -85,8 +85,8 @@ See [docs/PLAN.md](docs/PLAN.md) for the detailed implementation plan.
 |---------|------|
 | PCB Design | EasyEDA Pro |
 | 3D Modeling | Autodesk Fusion |
-| Voice Processing | Jetson Orin Nano Super |
-| Voice Changer | RVC |
+| Voice Processing | Raspberry Pi 5 |
+| Voice Changer | [voice-changer (Beatrice)](https://github.com/w-okada/voice-changer) |
 | Translation | Gemini Live API |
 
 ## Sponsor
