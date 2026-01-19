@@ -11,7 +11,7 @@ Wants=pipewire.service wireplumber.service
 Type=simple
 
 ###############################################################################
-# Wait until both microphone and speaker are available
+# Wait until both microphone and speaker are available before starting vcclient
 ###############################################################################
 ExecStartPre=%h/conan-style-voice-changer-mic-speaker/raspi5/local/wait-for-audio-devices.sh
 
@@ -23,18 +23,14 @@ WorkingDirectory=%h/vcclient/dist
 ExecStart=/bin/bash -lc './start_http.sh'
 
 ###############################################################################
-# Send "start" command to the local HTTP API 30 seconds after the server starts,
-# then play the startup sound.
-#
-# Notes:
-# - We use curl with retry to tolerate the server not being ready immediately.
-# - We only play the sound if the POST succeeds (HTTP 2xx).
+# Post-start orchestration:
+# - Always wait 15 seconds (warm-up window right after process start)
+# - Then poll the API readiness (status check)
+# - Perform browser-like warm-up GETs
+# - POST start
+# - Play startup sound only if start succeeds
 ###############################################################################
-ExecStartPost=/bin/bash -lc '\
-  sleep 45; \
-  curl -fsS -X POST "http://localhost:18000/api/local-voice-changer-interface/operation/start" \
-    --retry 30 --retry-delay 1 --retry-all-errors; \
-  pw-play %h/conan-style-voice-changer-mic-speaker/raspi5/sounds/start.wav'
+ExecStartPost=%h/.local/bin/vcclient-autostart.sh
 
 ###############################################################################
 # Restart policy:
