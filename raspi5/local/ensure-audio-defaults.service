@@ -1,0 +1,13 @@
+[Unit]
+Description=Continuously enforce default PipeWire sink/source (BUTTON_SPEAKER / RED_BOWTIE_MIC)
+After=pipewire.service wireplumber.service pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/ensure-audio-defaults.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target
+
