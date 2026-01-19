@@ -159,18 +159,33 @@ pw-play ~/conan-style-voice-changer-mic-speaker/raspi5/sounds/test_sp.wav
 
 ```
 mkdir -p ~/.local/bin
+
 cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/ensure-audio-defaults.sh ~/.local/bin/
 chmod 755 ~/.local/bin/ensure-audio-defaults.sh
+
+cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/wait-for-audio-devices.sh ~/.local/bin/
+chmod 755 ~/.local/bin/wait-for-audio-devices.sh 
+
+cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/vcclient-autostart.sh ~/.local/bin/
+chmod 755 ~/.local/bin/vcclient-autostart.sh
 ```
 
 ```
 mkdir -p ~/.config/systemd/user
 cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/ensure-audio-defaults.service ~/.config/systemd/user/
+cp ~/conan-style-voice-changer-mic-speaker/raspi5/local/vcclient.service ~/.config/systemd/user/
+
 systemctl --user daemon-reload
 systemctl --user enable --now ensure-audio-defaults.service
+systemctl --user enable --now vcclient.service
+
 
 systemctl --user restart ensure-audio-defaults.service
 systemctl --user status ensure-audio-defaults.service
+
+systemctl --user restart vcclient.service
+systemctl --user status vcclient.service
+
 ```
 
 ## Download Beatrice vcclient for aarch64
@@ -183,6 +198,8 @@ unzip vcclient_std_lin_aarch64_2.2.2-beta_only_beatrice.zip
 cd dist
 
 sudo apt install -y libportaudio2 portaudio19-dev libasound2 libasound2-dev libayatana-appindicator3-1 libappindicator3-1
+
+./start_https.sh
 ```
 
 ---
@@ -207,4 +224,3 @@ Change voice character
 ```
 2026-01-20 02:58:56,232 - uvicorn.ac - h11_impl             - INFO - 192.168.31.81:51282 - "PUT /api/slot-manager/slots/0 HTTP/1.1" 200 - uvicorn/protocols/http/h11_impl.py - 473
 ```
-
