@@ -1,11 +1,20 @@
 #!/bin/bash
 set -euo pipefail
 
+# ===== User-configurable parameters =====
 SINK_NAME="BUTTON_SPEAKER"
 SOURCE_NAME="RED_BOWTIE_MIC"
-INTERVAL=1
 
-# Return first numeric ID (e.g. 45) from a wpctl status section line, even if it starts with '*'
+# Volume levels (0.0 – 1.0)
+SINK_VOLUME="1.0"     # 100%
+SOURCE_VOLUME="0.8"   # 80%
+
+# Polling interval in seconds
+INTERVAL=1
+# ========================================
+
+# Return first numeric ID (e.g. 45) from a wpctl status section line,
+# even if it starts with '*'
 extract_id() {
   sed -n 's/.*[^0-9]\([0-9][0-9]*\)\.\s.*/\1/p' | head -n1
 }
@@ -36,13 +45,13 @@ while true; do
   if [[ -n "${sink}" && -n "${source}" ]]; then
     if [[ "$sink" != "$last_sink" ]]; then
       wpctl set-default "$sink" || true
-      wpctl set-volume "$sink" 1.0 || true
+      wpctl set-volume "$sink" "$SINK_VOLUME" || true
       last_sink="$sink"
     fi
 
     if [[ "$source" != "$last_source" ]]; then
       wpctl set-default "$source" || true
-      wpctl set-volume "$source" 0.3 || true
+      wpctl set-volume "$source" "$SOURCE_VOLUME" || true
       last_source="$source"
     fi
   fi
