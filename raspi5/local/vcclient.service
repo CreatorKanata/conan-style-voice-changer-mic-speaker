@@ -1,0 +1,55 @@
+[Unit]
+Description=VC Client HTTP Server (start when mic and speaker are ready)
+After=pipewire.service wireplumber.service
+Wants=pipewire.service wireplumber.service
+
+[Service]
+###############################################################################
+# Service type:
+# - simple: ExecStart is the main long-running process
+###############################################################################
+Type=simple
+
+###############################################################################
+# Wait until both microphone and speaker are available
+###############################################################################
+ExecStartPre=%h/conan-style-voice-changer-mic-speaker/raspi5/local/wait-for-audio-devices.sh
+
+###############################################################################
+# Start the HTTP server
+# This process is expected to run indefinitely
+###############################################################################
+WorkingDirectory=%h/vcclient/dist
+ExecStart=/bin/bash -lc './start_http.sh'
+
+###############################################################################
+# Send "start" command to the local HTTP API 30 seconds after the server starts,
+# then play the startup sound.
+#
+# Notes:
+# - We use curl with retry to tolerate the server not being ready immediately.
+# - We only play the sound if the POST succeeds (HTTP 2xx).
+###############################################################################
+ExecStartPost=/bin/bash -lc '\
+  sleep 30; \
+  curl -fsS -X POST "http://localhost:18000/api/local-voice-changer-interface/operation/start" \
+    --retry 30 --retry-delay 1 --retry-all-errors; \
+  pw-play %h/conan-style-voice-changer-mic-speaker/raspi5/sounds/start.wav'
+
+###############################################################################
+# Restart policy:
+# - Restart only if the server crashes or exits with an error
+###############################################################################
+Restart=on-failure
+RestartSec=2
+StartLimitIntervalSec=0
+
+###############################################################################
+# Log output to the systemd journal
+###############################################################################
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+
