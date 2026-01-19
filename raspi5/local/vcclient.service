@@ -31,7 +31,7 @@ ExecStart=/bin/bash -lc './start_http.sh'
 # - We only play the sound if the POST succeeds (HTTP 2xx).
 ###############################################################################
 ExecStartPost=/bin/bash -lc '\
-  sleep 30; \
+  sleep 45; \
   curl -fsS -X POST "http://localhost:18000/api/local-voice-changer-interface/operation/start" \
     --retry 30 --retry-delay 1 --retry-all-errors; \
   pw-play %h/conan-style-voice-changer-mic-speaker/raspi5/sounds/start.wav'

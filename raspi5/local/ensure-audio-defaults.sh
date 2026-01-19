@@ -34,6 +34,8 @@ SOUND_TEST_SPK="$HOME/conan-style-voice-changer-mic-speaker/raspi5/sounds/test_s
 SOUND_TEST_MIC="$HOME/conan-style-voice-changer-mic-speaker/raspi5/sounds/test_mic.wav"
 
 # Polling interval in seconds
+INTERVAL_SP=2
+INTERVAL_MIC=0.5
 INTERVAL=1
 
 # ============================================================================
@@ -79,14 +81,15 @@ get_source_id() {
 }
 
 ###############################################################################
-# play_after_1s
-# Plays a WAV file after a 1-second delay.
+# play_after_sec
+# Plays a WAV file after a X-second delay.
 # Executed in the background so it never blocks the main loop.
 ###############################################################################
-play_after_1s() {
+play_after_sec() {
   local wav="$1"
+  local wait_sec="$2"
   (
-    sleep 1
+    sleep $wait_sec
     pw-play "$wav" >/dev/null 2>&1
   ) &
 }
@@ -112,7 +115,7 @@ while true; do
       last_sink="$sink"
 
       # Play speaker test sound after 1 second
-      play_after_1s "$SOUND_TEST_SPK"
+      play_after_sec "$SOUND_TEST_SPK" "$INTERVAL_SP"
     fi
 
     # Microphone newly connected
@@ -122,7 +125,7 @@ while true; do
       last_source="$source"
 
       # Play microphone test sound after 1 second
-      play_after_1s "$SOUND_TEST_MIC"
+      play_after_sec "$SOUND_TEST_MIC" "$INTERVAL_MIC"
     fi
 
   else
