@@ -4,7 +4,19 @@ A real-world implementation of the iconic voice changer bowtie from Detective Co
 
 ![Project Status](https://img.shields.io/badge/status-in%20development-yellow)
 
-<a href="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/hero.jpg?raw=true"><img src="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/hero.jpg?raw=true" width="500"></a>
+<a href="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/thumbnail-jlcpcb.jpg?raw=true"><img src="https://github.com/CreatorKanata/conan-style-voice-changer-mic-speaker/blob/main/images/thumbnail-jlcpcb.jpg?raw=true" width="500"></a>
+
+### Demo Video
+
+<a href="https://www.youtube.com/shorts/dokzC9MDHtE"><img src="images/youtube-thumbnail.jpg" height="200" alt="Demo Video on YouTube"></a>
+
+https://www.youtube.com/shorts/dokzC9MDHtE
+
+### PCB Design on OSHWLab
+
+<a href="https://oshwlab.com/creator-kanata/conan-style-mic-speaker"><img src="images/oshwlab-product.jpg" height="200" alt="PCB Design on OSHWLab"></a>
+
+https://oshwlab.com/creator-kanata/conan-style-mic-speaker
 
 ## Overview
 
