@@ -14,7 +14,7 @@ https://www.youtube.com/shorts/dokzC9MDHtE
 
 ### PCB Design on OSHWLab
 
-<a href="https://oshwlab.com/creator-kanata/conan-style-mic-speaker"><img src="images/oshwlab-product.jpg" height="200" alt="PCB Design on OSHWLab"></a>
+<a href="https://oshwlab.com/takehide22/conan-style-mic-speaker"><img src="images/oshwlab-product.jpg" height="200" alt="PCB Design on OSHWLab"></a>
 
 https://oshwlab.com/creator-kanata/conan-style-mic-speaker
 
